@@ -63,6 +63,14 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - images/storm.png
+    - images/clear.png
+    - images/cloud.png
+    - images/rain.png
+    - images/snow.png
+    - images/cloudSun.png
+    - images/rainGif.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
