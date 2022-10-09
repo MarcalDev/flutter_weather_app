@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/Views/CitySelectorPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
             Text(
                 "Today, 01 June",
                 style: TextStyle(
+                    fontFamily: 'ProximaNova',
                   fontSize: 13
                 ),
             ),
@@ -27,17 +29,26 @@ class _HomePageState extends State<HomePage> {
                     Icon(
                         Icons.pin_drop_sharp,
                         size: 22,
-                    ),
+                      ),
                     Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Text(
                         "Rio de Janeiro",
                         style: TextStyle(
+                            fontFamily: 'ProximaNova',
                             fontSize: 20
                         ),
                       ),
                     ) ,
-                    Icon(Icons.arrow_drop_down),
+                    GestureDetector(
+                      child: Icon(Icons.arrow_drop_down),
+                      onTap: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const CitySelectorPage())
+                        );
+                      },
+                    ),
                   ],
                 ),
                 Icon(
@@ -76,7 +87,7 @@ class _HomePageState extends State<HomePage> {
       ],
     );
     return Scaffold(
-      backgroundColor: Color(0xfff2f9f8),
+      backgroundColor: Color(0xfff7f7f7),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -95,6 +106,7 @@ class _HomePageState extends State<HomePage> {
             "Cloudy",
             style: TextStyle(
               fontSize: 35,
+              fontFamily: 'ProximaNova',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -134,6 +146,7 @@ class _HomePageState extends State<HomePage> {
             title,
             style: const TextStyle(
                 fontSize: 14,
+                fontFamily: 'ProximaNova',
                 color: Colors.black54
             ),
         ),
@@ -141,6 +154,7 @@ class _HomePageState extends State<HomePage> {
             value,
             style: const TextStyle(
                 fontSize: 25,
+              fontFamily: 'ProximaNova',
                 fontWeight: FontWeight.bold,
             ),
         ),
@@ -152,6 +166,8 @@ class _HomePageState extends State<HomePage> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(15)),
       color: Color(0xff3330f2),
+      shadowColor: Colors.transparent,
+
       child: Padding(
         padding: EdgeInsets.fromLTRB(15,20,15,20),
         child: Column(
@@ -165,12 +181,14 @@ class _HomePageState extends State<HomePage> {
             Text(
               time,
               style: TextStyle(
+                  fontFamily: 'ProximaNova',
                 color: Colors.white
               ),
             ),
             Text(
                 temperature,
                 style: TextStyle(
+                    fontFamily: 'ProximaNova',
                     color: Colors.white
                 ),
             ),

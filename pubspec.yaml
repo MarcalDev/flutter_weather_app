@@ -94,6 +94,15 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: ProximaNova
+      fonts:
+        - asset: assets/fonts/Proxima-Nova-Regular.otf
+        - asset: assets/fonts/Proxima-Nova-Bold.otf
+          weight: 700
+    - family: ProximaNovaSemiBold
+      fonts:
+        - asset: assets/fonts/Proxima-Nova-Semibold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
