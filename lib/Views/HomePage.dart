@@ -27,13 +27,13 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: [
                     Icon(
-                        Icons.pin_drop_sharp,
+                        Icons.place_sharp,
                         size: 22,
                       ),
                     Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Text(
-                        "Rio de Janeiro",
+                        "Bauru",
                         style: TextStyle(
                             fontFamily: 'ProximaNova',
                             fontSize: 20
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ) ,
                     GestureDetector(
-                      child: Icon(Icons.arrow_drop_down),
+                      child: Icon(Icons.keyboard_arrow_down_rounded),
                       onTap: (){
                         Navigator.of(context).push(
                             MaterialPageRoute(
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Icon(
-                    Icons.calendar_month,
+                    Icons.edit_calendar_outlined,
                     size: 25,
                 ),
               ],
@@ -115,6 +115,7 @@ class _HomePageState extends State<HomePage> {
             child: metricsSection,
           ),
           Card(
+            margin: EdgeInsets.all(0),
             color: Color(0xff2d27dd),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35))),
             child: Padding(
@@ -124,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 25),
                    child: Divider(
-                     color: Colors.grey,
-                     thickness: 4,
+                     color: Colors.white,
+                     thickness: 3,
                      endIndent: 130,
                      indent: 130,
                    ),

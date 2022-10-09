@@ -8,7 +8,7 @@ class CitySelectorPage extends StatefulWidget {
 }
 
 class _CitySelectorPageState extends State<CitySelectorPage> {
-  Color _primaryColor = Color(0xff3330f2);
+  Color _primaryColor = const Color(0xff3330f2);
   @override
   Widget build(BuildContext context) {
     Widget headerSection = Row(
@@ -20,7 +20,7 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
             Navigator.of(context).pop();
           },
         ),
-        Expanded(
+        const Expanded(
             child: Center(
           child:
           Text(
@@ -36,34 +36,41 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
       ],
     );
     Widget searchBarSection = Card(
-      color: Color(0xffededed),
+      shadowColor: Colors.transparent,
+      elevation: 0,
+      color: const Color(0xffededed),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             child: Icon(Icons.search, color: _primaryColor),
           ),
-          Expanded(
+          const Expanded(
               child: SizedBox(
                 height: 40,
                 child: TextField(
                   textAlignVertical: TextAlignVertical.bottom,
                   obscureText: false,
+                  style: TextStyle(
+                    fontFamily: 'ProximaNovaSemiBold',
+                    fontSize: 17,
+                    color: Colors.black,
+                  ),
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
+                      border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                     ),
                     labelText: '',
                     hintText: 'City name',
-
                     hintStyle: TextStyle(
                         fontFamily: 'ProximaNova',
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
                         color: Colors.black26,
                     ),
+
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                   ),
                 ) ,
@@ -82,14 +89,14 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
       ],
     );
     return Scaffold(
-      backgroundColor: Color(0xfff7f7f7),
+      backgroundColor: const Color(0xfff7f7f7),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(35,80,35,0),
+        padding: const EdgeInsets.fromLTRB(35,85,35,0),
         child: Column(
           children: [
             headerSection,
             Padding(
-                padding: EdgeInsets.only(top:20, bottom: 15),
+                padding: const EdgeInsets.only(top:20, bottom: 15),
                 child: searchBarSection,
             ),
             cityListSection,
@@ -104,20 +111,20 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
     return Card(
       shape: OutlineInputBorder(borderRadius: BorderRadius.circular(6), borderSide: BorderSide(color: _primaryColor)),
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(Icons.check_circle, color: _primaryColor),
             Expanded(
                 child:Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 10),
                   child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                           cityName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'ProximaNovaSemiBold',
                             fontWeight: FontWeight.w400,
                             fontSize: 18
@@ -126,7 +133,7 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
                       Text(
                         countryName,
                         textAlign: TextAlign.start,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'ProximaNova',
                           color: Colors.black54,
                           fontSize: 16
@@ -143,24 +150,24 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
   }
   Card _cityListItemUnselectedCard(String cityName, String countryName){
     return Card(
-      shadowColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         elevation: 0,
-        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(6), borderSide: BorderSide(color: Colors.transparent,)),
+        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(6), borderSide: const BorderSide(color: Colors.transparent,)),
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Icon(Icons.history, color: Colors.black54,),
+              const Icon(Icons.history, color: Colors.black54,),
               Expanded(
                   child:Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child:  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             cityName,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: 'ProximaNovaSemiBold',
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18
@@ -169,7 +176,7 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
                           Text(
                             countryName,
                             textAlign: TextAlign.start,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: 'ProximaNova',
                                 color: Colors.black54,
                                 fontSize: 16
