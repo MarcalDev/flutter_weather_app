@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Views/HomePage.dart';
-import 'Views/CitySelectorPage.dart';
+import '2-app/views/home/pages/HomePage.dart';
+import '2-app/views/citySelector/pages/CitySelectorPage.dart';
 
 
 void main(){

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/Views/CitySelectorPage.dart';
+import 'package:flutter_weather_app/2-app/views/citySelector/pages/CitySelectorPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
