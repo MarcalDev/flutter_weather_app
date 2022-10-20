@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/2-app/views/citySelector/pages/CitySelectorPage.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,13 +11,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DateTime selectedDate = DateTime.now();
+  String cityNameText = "Marília";
+  String temperatureText = "28";
+  String windText = "233";
+  String humidityText = "79";
+  String weatherStatusText = "Rainy";
+  String weatherStatusImage = "images/cloudSun.png";
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context:context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2020, 8),
+      lastDate: DateTime(2023,8));
+    if(picked != null && picked != selectedDate){
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('pt-br');
     Widget headerSection = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                "Today, 01 June",
+              DateFormat.yMMMMd('pt-br').format(selectedDate),
                 style: TextStyle(
                     fontFamily: 'ProximaNova',
                   fontSize: 13
@@ -33,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Text(
-                        "Bauru",
+                        cityNameText,
                         style: TextStyle(
                             fontFamily: 'ProximaNova',
                             fontSize: 20
@@ -51,10 +75,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                Icon(
+                GestureDetector(
+                  child: Icon(
                     Icons.edit_calendar_outlined,
                     size: 25,
-                ),
+                  ),
+                  onTap: () => _selectDate(context),
+                )
+
               ],
             )
           ],
@@ -63,17 +91,17 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _mainMetricsColumn("Wind","234"),
+          _mainMetricsColumn("Wind",windText),
           VerticalDivider(
             color: Colors.black12,
             thickness: 2,
           ),
-          _mainMetricsColumn("Temperature","28°C"),
+          _mainMetricsColumn("Temperature",temperatureText + "°C"),
           VerticalDivider(
             color: Colors.black12,
             thickness: 2,
           ),
-          _mainMetricsColumn("Humidity","79%"),
+          _mainMetricsColumn("Humidity",humidityText +"%"),
         ],
       ),
     ) ;
@@ -98,12 +126,12 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.fromLTRB(0,35,0,10),
             child: Image.asset(
-              'images/cloudSun.png',
+              weatherStatusImage,
               height: 190,
             ),
           ) ,
           Text(
-            "Cloudy",
+            weatherStatusText,
             style: TextStyle(
               fontSize: 35,
               fontFamily: 'ProximaNova',
