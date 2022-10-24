@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../../1-base/models/city.dart';
+
 class CitySelectorPage extends StatefulWidget {
-  const CitySelectorPage({Key? key}) : super(key: key);
+  const CitySelectorPage({Key key, this.city}) : super(key: key);
+
+  final City city;
 
   @override
   State<CitySelectorPage> createState() => _CitySelectorPageState();
@@ -9,6 +13,10 @@ class CitySelectorPage extends StatefulWidget {
 
 class _CitySelectorPageState extends State<CitySelectorPage> {
   Color _primaryColor = const Color(0xff3330f2);
+  String cityName = "";
+  final _controller = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     Widget headerSection = Row(
@@ -17,7 +25,7 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
         GestureDetector(
           child: Icon(Icons.arrow_back_ios_new_rounded, color: _primaryColor),
           onTap: (){
-            Navigator.of(context).pop();
+            Navigator.pop(context,cityName);
           },
         ),
         const Expanded(
@@ -45,12 +53,19 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-            child: Icon(Icons.search, color: _primaryColor),
+            child:
+            GestureDetector(
+              child: Icon(Icons.search, color: _primaryColor),
+              onTap: (){
+                Navigator.pop(context, _controller.text);
+              },
+            )
           ),
-          const Expanded(
+           Expanded(
               child: SizedBox(
                 height: 40,
-                child: TextField(
+                child: TextFormField(
+                  controller: _controller,
                   textAlignVertical: TextAlignVertical.bottom,
                   obscureText: false,
                   style: TextStyle(
@@ -70,7 +85,6 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
                         fontSize: 17,
                         color: Colors.black26,
                     ),
-
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                   ),
                 ) ,
@@ -105,6 +119,7 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
       )
 
     );
+
   }
 
   Card _cityListItemSelectedCard(String cityName, String countryName){
@@ -190,5 +205,10 @@ class _CitySelectorPageState extends State<CitySelectorPage> {
           ),
         )
     );
+
   }
+
 }
+
+
+
